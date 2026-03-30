@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BYC Wellness Workshop – Facilitator Application</title>
+<style>
+  :root {
+    --byc-black: #1A1A1A;
+    --byc-yellow: #F5C518;
+    --byc-light-yellow: #FFF9DC;
+    --byc-gold: #D4A017;
+    --byc-gray: #333333;
+    --byc-light-gray: #F4F4F4;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #EFEFEF;
+    color: var(--byc-gray);
+    padding: 32px 16px 60px;
+  }
+
+  .page-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: var(--byc-black);
+    color: var(--white);
+    text-align: center;
+    padding: 32px 24px 24px;
+    border-top: 6px solid var(--byc-yellow);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .header .org-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--byc-yellow);
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-size: 13px;
+    color: #CCCCCC;
+    margin-top: 6px;
+  }
+
+  .header .event-badge {
+    display: inline-block;
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  /* Intro Banner */
+  .intro-banner {
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--byc-gray);
+  }
+
+  /* Form card */
+  .form-card {
+    background: var(--white);
+    padding: 28px 32px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--byc-black);
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 8px 14px;
+    margin: 0 -32px 20px;
+  }
+
+  .field-group {
+    margin-bottom: 20px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--byc-black);
+    margin-bottom: 6px;
+  }
+
+  .field-group label .required {
+    color: var(--byc-gold);
+    margin-left: 3px;
+  }
+
+  .field-group input[type="text"],
+  .field-group input[type="email"],
+  .field-group input[type="tel"],
+  .field-group select,
+  .field-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: var(--byc-gray);
+    background: var(--byc-light-gray);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    border-color: var(--byc-yellow);
+    background: #FFFFF8;
+  }
+
+  .field-group textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .field-group select {
+    cursor: pointer;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Checkboxes */
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--byc-gray);
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    background: var(--byc-light-gray);
+    transition: all 0.15s;
+  }
+
+  .checkbox-item:hover {
+    border-color: var(--byc-yellow);
+    background: var(--byc-light-yellow);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--byc-black);
+    flex-shrink: 0;
+  }
+
+  /* Sobriety field note */
+  .field-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  /* Submit */
+  .submit-section {
+    background: var(--byc-black);
+    padding: 24px 32px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .submit-btn {
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    padding: 14px 48px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .submit-btn:hover { opacity: 0.85; }
+
+  .submit-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 12px;
+  }
+
+  /* Contacts footer */
+  .contacts-bar {
+    background: var(--byc-light-yellow);
+    border: 1px solid #E8D88A;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    margin-top: 0;
+  }
+
+  .contacts-bar strong {
+    color: var(--byc-black);
+  }
+
+  .contacts-bar .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--byc-gold);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .checkbox-group { grid-template-columns: 1fr; }
+    .form-card { padding: 20px 18px; }
+    .section-title { margin: 0 -18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="org-name">The Blackyard Collective NYC</div>
+    <h1>Wellness Workshop<br>Facilitator Application</h1>
+    <div class="subtitle">BYC Black Convention &bull; Los Angeles, California</div>
+    <div class="event-badge">October 2025</div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-banner">
+    We are building a wellness track centered on recovery, holistic health, and community healing. 
+    We are looking for <strong>passionate, qualified facilitators</strong> with lived experience to lead our designated workshops. 
+    All applicants must have a commitment to sobriety and wellness. Complete the form below to be considered.
+    <br><br>
+    Questions? Contact <strong>Mike: 202.425.3161</strong> or <strong>Ricky: 202.940.3808</strong>
+  </div>
+
+    <!-- Success Message -->
+  <div id="success-msg" style="display:none; background:#1A1A1A; color:#F5C518; text-align:center; padding:32px 24px; border-radius:4px; margin-bottom:16px; border-top:6px solid #F5C518;">
+    <div style="font-size:28px; margin-bottom:10px;">&#10003;</div>
+    <div style="font-size:18px; font-weight:900; margin-bottom:6px;">Application Submitted!</div>
+    <div style="font-size:13px; color:#ccc;">Thank you for your interest. The BYC team will be in touch soon.<br>Questions? Contact Mike: 202.425.3161 or Ricky: 202.940.3808</div>
+  </div>
+
+  <form id="byc-form" action="https://formspree.io/f/mvzvayzn" method="POST">
+    <input type="hidden" name="_subject" value="BYC Facilitator Application - New Submission">
+
+    <!-- PERSONAL INFORMATION -->
+    <div class="form-card">
+      <div class="section-title">Personal Information</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" name="Full Name" placeholder="First and Last Name" required>
+        </div>
+        <div class="field-group">
+          <label>Preferred Pronouns</label>
+          <input type="text" name="Preferred Pronouns" placeholder="e.g. she/her, they/them">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" name="Phone Number" placeholder="(000) 000-0000" required>
+        </div>
+        <div class="field-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" name="_replyto" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>City / State</label>
+          <input type="text" name="City / State" placeholder="e.g. New York, NY">
+        </div>
+        <div class="field-group">
+          <label>Length of Sobriety <span class="required">*</span></label>
+          <input type="text" name="Length of Sobriety" placeholder="e.g. 3 years, 18 months" required>
+          <div class="field-note">Please be specific. Sobriety is honored and celebrated here.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKSHOP INTEREST -->
+    <div class="form-card">
+      <div class="section-title">Workshop Interest</div>
+
+      <div class="field-group">
+        <label>Which workshop(s) are you interested in facilitating? <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox"> Grief
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Breathwork
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Financial Wellness
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Empathy
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Community Health
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Body &amp; Identity Confidence
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Facilitator Role Preference</label>
+        <select>
+          <option value="">-- Select --</option>
+          <option>Lead Facilitator</option>
+          <option>Co-Facilitator</option>
+          <option>Open to Either</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- QUALIFICATIONS -->
+    <div class="form-card">
+      <div class="section-title">Skills &amp; Qualifications</div>
+
+      <div class="field-group">
+        <label>Skills &amp; Professional Qualifications <span class="required">*</span></label>
+        <textarea name="Skills & Qualifications" placeholder="List relevant certifications, degrees, trainings, or professional background (e.g. Licensed Therapist, Breathwork Certified, Certified Financial Planner, Wellness Coach, etc.)"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Prior Facilitation / Workshop Experience <span class="required">*</span></label>
+        <textarea name="Prior Experience" placeholder="Describe any previous facilitation, group leadership, speaking, or workshop experience — recovery-related or otherwise."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Workshop Concept Description <span class="required">*</span></label>
+        <textarea name="Workshop Concept" placeholder="Briefly describe what your session would look like: format, flow, key activities or discussion points. What will attendees leave with?"></textarea>
+      </div>
+    </div>
+
+    <!-- LITERATURE & SPEAKER MEETINGS -->
+    <div class="form-card">
+      <div class="section-title">Literature &amp; Speaker Meeting Sign-Ups</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
+        In addition to the 6 wellness workshops, we have <strong>2 Literature Meetings</strong> and <strong>3 Speaker Meetings</strong> 
+        available for volunteer leads. Select any you are interested in leading below.
+      </p>
+
+      <div class="field-group">
+        <label>Literature Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox"> Literature Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Literature Meeting 2
+          </label>
+        </div>
+        <div class="field-note" style="margin-top:8px;">Literature meetings focus on shared reading and group reflection on recovery texts. Please note any specific literature you are comfortable leading in the field below.</div>
+      </div>
+
+      <div class="field-group" style="margin-top:6px;">
+        <label>Speaker Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group" style="grid-template-columns:1fr 1fr 1fr;">
+          <label class="checkbox-item">
+            <input type="checkbox"> Speaker Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Speaker Meeting 2
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox"> Speaker Meeting 3
+          </label>
+        </div>
+        <div class="field-note" style="margin-top:8px;">Speaker meetings feature personal testimonies and stories of recovery. Indicate your interest in sharing your story or chairing a session.</div>
+      </div>
+
+      <div class="field-group" style="margin-top:4px;">
+        <label>Role in Literature / Speaker Meeting</label>
+        <select name="Facilitator Role">
+          <option value="">-- Select your preferred role --</option>
+          <option>Lead / Chair the meeting</option>
+          <option>Featured Speaker (share my story)</option>
+          <option>Literature Reader / Co-lead</option>
+          <option>Open to any role</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Additional Notes on Literature or Speaker Meeting Interest</label>
+        <textarea name="Literature/Speaker Notes" placeholder="e.g. specific texts you can lead, topics you'd speak on, your story's focus area, or any questions about these sessions." style="min-height:80px"></textarea>
+      </div>
+    </div>
+
+    <!-- AVAILABILITY -->
+    <div class="form-card">
+      <div class="section-title">Availability &amp; Logistics</div>
+
+      <div class="field-group">
+        <label>General Availability for Planning Calls</label>
+        <select name="Planning Call Availability">
+          <option value="">-- Select --</option>
+          <option>Weekday mornings</option>
+          <option>Weekday afternoons</option>
+          <option>Weekday evenings</option>
+          <option>Weekends</option>
+          <option>Flexible / Multiple options</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Will you be available to travel to Los Angeles in October 2025? <span class="required">*</span></label>
+        <select name="LA Travel Availability" required>
+          <option value="">-- Select --</option>
+          <option>Yes – confirmed</option>
+          <option>Yes – pending confirmation</option>
+          <option>Need support (travel assistance)</option>
+          <option>Unsure at this time</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Accessibility or Support Needs</label>
+        <textarea name="Accessibility Needs" placeholder="Let us know if you have any accessibility requirements or needs we should plan around." style="min-height:70px"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>How did you hear about this opportunity?</label>
+        <select name="How Did You Hear">
+          <option value="">-- Select --</option>
+          <option>NYCMA Network</option>
+          <option>Ike &amp; Tina Group</option>
+          <option>BYC Social Media</option>
+          <option>Direct Outreach (Mike or Ricky)</option>
+          <option>Friend / Colleague</option>
+          <option>Other Recovery Community</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Anything else you'd like us to know?</label>
+        <textarea name="Additional Notes" placeholder="Additional thoughts, context, or questions for the organizing team."></textarea>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="submit-btn">Submit Application</button>
+      <div class="submit-note">Your information is confidential and used solely for facilitator selection purposes.</div>
+      <div id="error-msg" style="display:none; color:#ffcccc; margin-top:10px; font-size:13px;">Something went wrong. Please try again or contact Mike: 202.425.3161</div>
+    </div>
+
+  </form>
+
+  <script>
+    const form = document.getElementById('byc-form');
+    const btn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-msg');
+    const errorMsg = document.getElementById('error-msg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      errorMsg.style.display = 'none';
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch(err) {
+        btn.textContent = 'Submit Application';
+        btn.disabled = false;
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+
+  <!-- Contacts Footer -->
+  <div class="contacts-bar">
+    <div><span class="label">Questions?</span> Reach out to the organizing team:</div>
+    <div><strong>Mike:</strong> 202.425.3161</div>
+    <div><strong>Ricky:</strong> 202.940.3808</div>
+  </div>
+
+</div>
+</body>
+</html>
