@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -257,6 +257,9 @@
     font-weight: 700;
     margin-right: 8px;
   }
+
+  /* Step Workshops section separator — adds top margin to visually split from the form above */
+  .step-section-header { margin-top: 40px; }
 
   @media (max-width: 600px) {
     .field-row { grid-template-columns: 1fr; }
@@ -546,6 +549,237 @@
     });
   </script>
 
+  <!-- ═══════════════════════════════════════════════════════════════
+       STEP WORKSHOPS FACILITATOR SIGN-UP — INDEPENDENT FORM
+       ───────────────────────────────────────────────────────────────
+       This section is a SEPARATE form from the BYC Wellness Workshop
+       application above (id="byc-form"). It submits independently to
+       a different Formspree endpoint connected to Purtuejames@gmail.com.
+
+       ACTION: Replace REPLACE_WITH_STEP_WORKSHOP_FORM_ID in the
+       <form> action below with the correct Formspree form ID.
+       e.g. https://formspree.io/f/abcd1234
+
+       Questions about this section:
+         James Purtue — 323.213.6634
+         Celina Lopez — 914.439.5420
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Step Workshops Section Header -->
+  <div class="header step-section-header">
+    <div class="org-name">The Blackyard Collective</div>
+    <h2 style="font-size:22px;font-weight:900;color:#ffffff;line-height:1.2;margin-bottom:8px;">Step Workshops<br>Facilitator Sign-Up</h2>
+    <div class="subtitle">A separate opportunity — complete this section independently from the form above</div>
+    <div class="event-badge">Step Workshop Interest</div>
+  </div>
+
+  <!-- Step Workshops Intro Banner -->
+  <div class="intro-banner">
+    We are also seeking facilitators for a series of Step Workshops. Please complete this section if you are interested in facilitating or supporting one of the Step Workshops listed below.
+    <br><br>
+    For questions or issues regarding the Step Workshops section, please contact:<br>
+    <strong>James Purtue — 323.213.6634</strong> &nbsp;&bull;&nbsp; <strong>Celina Lopez — 914.439.5420</strong>
+  </div>
+
+  <!-- Step Workshop Success Message (shown after submission, hidden by default) -->
+  <div id="step-success-msg" style="display:none; background:#1A1A1A; color:#F5C518; text-align:center; padding:32px 24px; border-radius:4px; margin-bottom:16px; border-top:6px solid #F5C518;">
+    <div style="font-size:28px; margin-bottom:10px;">&#10003;</div>
+    <div style="font-size:18px; font-weight:900; margin-bottom:6px;">Step Workshop Interest Submitted!</div>
+    <div style="font-size:13px; color:#cccccc;">Thank you for your interest. James or Celina will be in touch soon.<br>Questions? James Purtue: 323.213.6634 &nbsp;&bull;&nbsp; Celina Lopez: 914.439.5420</div>
+  </div>
+
+  <!-- STEP WORKSHOPS FORM
+       ─────────────────────────────────────────────────────────────────
+       IMPORTANT: Update the action URL below with the Formspree form ID
+       created for Purtuejames@gmail.com before going live.
+       ─────────────────────────────────────────────────────────────────
+  -->
+  <form id="step-workshop-form" action="https://formspree.io/f/REPLACE_WITH_STEP_WORKSHOP_FORM_ID" method="POST">
+    <!-- Formspree hidden metadata -->
+    <input type="hidden" name="_subject" value="BYC Step Workshop Facilitator Interest – New Submission">
+
+    <!-- PERSONAL INFORMATION -->
+    <div class="form-card">
+      <div class="section-title">Personal Information</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" name="Full Name" placeholder="First and Last Name" required>
+        </div>
+        <div class="field-group">
+          <label>Preferred Pronouns</label>
+          <input type="text" name="Preferred Pronouns" placeholder="e.g. she/her, they/them">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" name="Phone Number" placeholder="(000) 000-0000" required>
+        </div>
+        <div class="field-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" name="_replyto" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>City / State</label>
+          <input type="text" name="City / State" placeholder="e.g. New York, NY">
+        </div>
+        <div class="field-group">
+          <label>Organization / Community Affiliation</label>
+          <input type="text" name="Organization / Affiliation" placeholder="e.g. NYCMA, Home Group, Nonprofit">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP WORKSHOP SELECTION -->
+    <div class="form-card">
+      <div class="section-title">Step Workshop Selection</div>
+
+      <div class="field-group">
+        <label>Which Step Workshop(s) are you interested in facilitating or supporting? <span class="required">*</span></label>
+        <div class="checkbox-group" style="grid-template-columns:1fr;">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Step 4 Resentment" value="Yes">
+            <span><strong>Step 4 Resentment</strong><br><span style="font-size:12px;color:#666;">Mad for a Reason: Racism, Resentment &amp; Recovery</span></span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Step 4 Fear" value="Yes">
+            <span><strong>Step 4 Fear</strong><br><span style="font-size:12px;color:#666;">Molly, You in Danger Girl: When Survival Fear Becomes Spiritual Blockage</span></span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Step 4 Sex" value="Yes">
+            <span><strong>Step 4 Sex</strong><br><span style="font-size:12px;color:#666;">From Sneaky Links to Sexual Ideals: Trade, Truth &amp; Transformation</span></span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Step 10" value="Yes">
+            <span><strong>Step 10</strong><br><span style="font-size:12px;color:#666;">Check Yourself Before You Wreck Yourself: Black Queer Peace Is an Inside Job</span></span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Step 12" value="Yes">
+            <span><strong>Step 12</strong><br><span style="font-size:12px;color:#666;">Don&rsquo;t Just Recover, Reach Black: How What Was Meant to Break Me Now Blesses Others</span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Facilitator Role Preference</label>
+        <select name="Facilitator Role">
+          <option value="">-- Select --</option>
+          <option>Lead Facilitator</option>
+          <option>Co-Facilitator</option>
+          <option>Support Role</option>
+          <option>Open to Either</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE & BACKGROUND -->
+    <div class="form-card">
+      <div class="section-title">Experience &amp; Background</div>
+
+      <div class="field-group">
+        <label>Relevant Experience / Short Bio <span class="required">*</span></label>
+        <textarea name="Relevant Experience" placeholder="Describe any facilitation experience, recovery background, lived experience, or professional qualifications relevant to the Step Workshop(s) you selected." required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Why are you drawn to this Step Workshop? <span class="required">*</span></label>
+        <textarea name="Workshop Connection" placeholder="Share why this topic resonates with you or how your story connects to the Step(s) you've selected." required></textarea>
+      </div>
+    </div>
+
+    <!-- AVAILABILITY -->
+    <div class="form-card">
+      <div class="section-title">Availability &amp; Additional Notes</div>
+
+      <div class="field-group">
+        <label>General Availability for Planning Calls</label>
+        <select name="Planning Call Availability">
+          <option value="">-- Select --</option>
+          <option>Weekday mornings</option>
+          <option>Weekday afternoons</option>
+          <option>Weekday evenings</option>
+          <option>Weekends</option>
+          <option>Flexible / Multiple options</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Will you be available to travel to Los Angeles in October 2026? <span class="required">*</span></label>
+        <select name="LA Travel Availability" required>
+          <option value="">-- Select --</option>
+          <option>Yes – confirmed</option>
+          <option>Yes – pending confirmation</option>
+          <option>Need support (travel assistance)</option>
+          <option>Unsure at this time</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Questions or Additional Notes</label>
+        <textarea name="Additional Notes" placeholder="Any questions for James or Celina, accessibility needs, or anything else you'd like the team to know."></textarea>
+      </div>
+    </div>
+
+    <!-- Step Workshop Submit -->
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="step-submit-btn">Submit Step Workshop Interest</button>
+      <div class="submit-note">Your information is confidential and used solely for Step Workshop facilitator selection.</div>
+      <div id="step-error-msg" style="display:none; color:#ffcccc; margin-top:10px; font-size:13px;">Something went wrong. Please try again or contact James: 323.213.6634</div>
+    </div>
+
+  </form>
+
+  <!-- Step Workshop Contacts Bar -->
+  <div class="contacts-bar">
+    <div><span class="label">Step Workshop Questions?</span></div>
+    <div><strong>James Purtue:</strong> 323.213.6634</div>
+    <div><strong>Celina Lopez:</strong> 914.439.5420</div>
+  </div>
+
+  <script>
+    // Step Workshops form — independent submission to Formspree (Purtuejames@gmail.com)
+    // ACTION: Replace REPLACE_WITH_STEP_WORKSHOP_FORM_ID in the form action with the correct Formspree ID.
+    const stepForm = document.getElementById('step-workshop-form');
+    const stepBtn  = document.getElementById('step-submit-btn');
+    const stepSuccessMsg = document.getElementById('step-success-msg');
+    const stepErrorMsg   = document.getElementById('step-error-msg');
+
+    stepForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      stepBtn.textContent = 'Sending...';
+      stepBtn.disabled = true;
+      stepErrorMsg.style.display = 'none';
+
+      const data = new FormData(stepForm);
+
+      try {
+        const res = await fetch(stepForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          stepForm.style.display = 'none';
+          stepSuccessMsg.style.display = 'block';
+          stepSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch(err) {
+        stepBtn.textContent = 'Submit Step Workshop Interest';
+        stepBtn.disabled = false;
+        stepErrorMsg.style.display = 'block';
+      }
+    });
+  </script>
+
   <!-- Registration Footnote -->
   <div style="background:#1A1A1A;padding:18px 32px;font-size:11px;color:#999999;line-height:1.9;border-top:2px solid #F5C518;">
     <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#F5C518;letter-spacing:1px;text-transform:uppercase;">Registration &amp; Travel Information</p>
@@ -565,3 +799,4 @@
 </div>
 </body>
 </html>
+
