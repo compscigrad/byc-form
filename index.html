@@ -264,6 +264,35 @@
   /* Step Workshops section separator — adds top margin to visually split from the form above */
   .step-section-header { margin-top: 40px; }
 
+  /* Speaker audio upload zone */
+  .upload-zone {
+    border: 2px dashed var(--byc-yellow);
+    background: var(--byc-light-yellow);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+    transition: border-color 0.2s, background 0.2s;
+    margin-top: 6px;
+  }
+
+  .upload-zone:hover {
+    border-color: var(--byc-gold);
+    background: #FFF3C0;
+  }
+
+  .upload-zone.drag-over {
+    border-color: var(--byc-gold);
+    background: #FFF3C0;
+  }
+
+  .upload-zone .upload-filename {
+    font-weight: 700;
+    color: var(--byc-black);
+  }
+
   @media (max-width: 600px) {
     .field-row { grid-template-columns: 1fr; }
     .checkbox-group { grid-template-columns: 1fr; }
@@ -397,61 +426,6 @@
       <div class="field-group">
         <label>Workshop Concept Description <span class="required">*</span></label>
         <textarea name="Workshop Concept" placeholder="Briefly describe what your session would look like: format, flow, key activities or discussion points. What will attendees leave with?"></textarea>
-      </div>
-    </div>
-
-    <!-- LITERATURE & SPEAKER MEETINGS -->
-    <div class="form-card">
-      <div class="section-title">Literature &amp; Speaker Meeting Sign-Ups</div>
-
-      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
-        In addition to the 6 wellness workshops, we have <strong>2 Literature Meetings</strong> and <strong>3 Speaker Meetings</strong> 
-        available for volunteer leads. Select any you are interested in leading below.
-      </p>
-
-      <div class="field-group">
-        <label>Literature Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox"> Literature Meeting 1
-          </label>
-          <label class="checkbox-item">
-            <input type="checkbox"> Literature Meeting 2
-          </label>
-        </div>
-        <div class="field-note" style="margin-top:8px;">Literature meetings focus on shared reading and group reflection on recovery texts. Please note any specific literature you are comfortable leading in the field below.</div>
-      </div>
-
-      <div class="field-group" style="margin-top:6px;">
-        <label>Speaker Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
-        <div class="checkbox-group" style="grid-template-columns:1fr 1fr 1fr;">
-          <label class="checkbox-item">
-            <input type="checkbox"> Speaker Meeting 1
-          </label>
-          <label class="checkbox-item">
-            <input type="checkbox"> Speaker Meeting 2
-          </label>
-          <label class="checkbox-item">
-            <input type="checkbox"> Speaker Meeting 3
-          </label>
-        </div>
-        <div class="field-note" style="margin-top:8px;">Speaker meetings feature personal testimonies and stories of recovery. Indicate your interest in sharing your story or chairing a session.</div>
-      </div>
-
-      <div class="field-group" style="margin-top:4px;">
-        <label>Role in Literature / Speaker Meeting</label>
-        <select name="Facilitator Role">
-          <option value="">-- Select your preferred role --</option>
-          <option>Lead / Chair the meeting</option>
-          <option>Featured Speaker (share my story)</option>
-          <option>Literature Reader / Co-lead</option>
-          <option>Open to any role</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <label>Additional Notes on Literature or Speaker Meeting Interest</label>
-        <textarea name="Literature/Speaker Notes" placeholder="e.g. specific texts you can lead, topics you'd speak on, your story's focus area, or any questions about these sessions." style="min-height:80px"></textarea>
       </div>
     </div>
 
@@ -680,6 +654,85 @@
       </div>
     </div>
 
+    <!-- SPEAKER SIGN-UP -->
+    <div class="form-card">
+      <div class="section-title">Speaker Sign-Up</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
+        We have 3 Speaker Meeting slots available at the BYC National Conference. Speaker meetings feature personal testimonies and stories of recovery. To be considered, please complete the fields below and upload a 20–30 minute audio recording of yourself speaking.
+      </p>
+
+      <div class="field-group">
+        <label>Speaker Meeting Availability <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 1" value="Yes"> Speaker Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 2" value="Yes"> Speaker Meeting 2
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 3" value="Yes"> Speaker Meeting 3
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Your Role</label>
+        <select name="Speaker Role">
+          <option value="">-- Select your role --</option>
+          <option>Featured Speaker (share my story)</option>
+          <option>Chair / Host the meeting</option>
+          <option>Open to any role</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Speaker Topic / Story Focus</label>
+        <textarea name="Speaker Topic" placeholder="Briefly describe your story's focus area, the topic you'd speak on, or the message you want attendees to leave with."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Upload a Speaker Recording <span class="required">*</span></label>
+        <div class="upload-zone" id="speaker-upload-zone">
+          🎙 Drag &amp; drop your audio file here, or click to browse
+        </div>
+        <input type="file" id="speaker-audio-input" name="Speaker Audio" accept=".mp3,.m4a,.m4b,.aac,.wav,.ogg,.oga,.flac,.wma" required style="display:none">
+        <div class="field-note">Accepted formats: MP3, M4A, WAV, AAC, OGG, FLAC, WMA &middot; Max file size: 50MB &middot; Recording should be 20–30 minutes</div>
+        <div id="speaker-upload-error-note" style="display:none; margin-top:8px; font-size:12px; color:#b05000; background:#FFF3C0; border-left:3px solid #D4A017; padding:8px 12px; border-radius:3px; line-height:1.6;">
+          <strong>Note:</strong> If file upload fails, please email your recording directly to
+          <strong>Purtuejames@gmail.com</strong> with subject line
+          &ldquo;BYC Speaker Recording &mdash; [Your Name]&rdquo;
+        </div>
+      </div>
+    </div>
+
+    <!-- LITERATURE MEETINGS -->
+    <div class="form-card">
+      <div class="section-title">Literature Meetings</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
+        We have 2 Literature Meeting slots available. Literature meetings focus on shared reading and group reflection on recovery texts.
+      </p>
+
+      <div class="field-group">
+        <label>Literature Meeting Availability <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Literature Meeting 1" value="Yes"> Literature Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Literature Meeting 2" value="Yes"> Literature Meeting 2
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Literature Notes</label>
+        <textarea name="Literature Notes" placeholder="Note any specific recovery texts you are comfortable leading, your preferred format, or any questions about these sessions."></textarea>
+      </div>
+    </div>
+
     <!-- EXPERIENCE & BACKGROUND -->
     <div class="form-card">
       <div class="section-title">Experience &amp; Background</div>
@@ -745,7 +798,45 @@
   </div>
 
   <script>
-    // Step Workshops form — independent submission to Formspree (Purtuejames@gmail.com)
+    // ── Speaker audio upload zone ──────────────────────────────────────────────
+    (function () {
+      const zone  = document.getElementById('speaker-upload-zone');
+      const input = document.getElementById('speaker-audio-input');
+      if (!zone || !input) return;
+
+      function showFile(file) {
+        zone.innerHTML = '<span class="upload-filename">&#10003; ' + file.name + '</span>';
+      }
+
+      // Click to browse
+      zone.addEventListener('click', function () { input.click(); });
+      input.addEventListener('change', function () {
+        if (input.files && input.files[0]) showFile(input.files[0]);
+      });
+
+      // Drag & drop
+      zone.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        zone.classList.add('drag-over');
+      });
+      zone.addEventListener('dragleave', function () {
+        zone.classList.remove('drag-over');
+      });
+      zone.addEventListener('drop', function (e) {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file) {
+          // Transfer the file to the hidden input via DataTransfer
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          input.files = dt.files;
+          showFile(file);
+        }
+      });
+    })();
+
+    // ── Step Workshops form — independent submission to Formspree (Purtuejames@gmail.com)
     // ACTION: Formspree endpoint → https://formspree.io/f/xdabbjjn (Purtuejames@gmail.com)
     const stepForm = document.getElementById('step-workshop-form');
     const stepBtn  = document.getElementById('step-submit-btn');
@@ -757,13 +848,24 @@
       stepBtn.textContent = 'Sending...';
       stepBtn.disabled = true;
       stepErrorMsg.style.display = 'none';
+      document.getElementById('speaker-upload-error-note').style.display = 'none';
 
+      // Collect all form fields as multipart/form-data so binary file data is encoded correctly.
       const data = new FormData(stepForm);
+
+      // Explicitly set the audio file so it is present even if the browser's FormData
+      // constructor skipped a programmatically-assigned file (e.g. via DataTransfer).
+      const audioInput = document.getElementById('speaker-audio-input');
+      if (audioInput && audioInput.files[0]) {
+        data.set('Speaker Audio', audioInput.files[0]);
+      }
 
       try {
         const res = await fetch(stepForm.action, {
           method: 'POST',
           body: data,
+          // No Content-Type header — the browser sets it automatically as
+          // multipart/form-data with the correct boundary string.
           headers: { 'Accept': 'application/json' }
         });
 
@@ -778,6 +880,11 @@
         stepBtn.textContent = 'Submit Step Workshop Interest';
         stepBtn.disabled = false;
         stepErrorMsg.style.display = 'block';
+        // Formspree free tier does not support file attachments — surface the
+        // email fallback whenever a submission with an audio file fails.
+        if (audioInput && audioInput.files && audioInput.files[0]) {
+          document.getElementById('speaker-upload-error-note').style.display = 'block';
+        }
       }
     });
   </script>
