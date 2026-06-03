@@ -378,34 +378,70 @@
         <label>Which workshop(s) are you interested in facilitating? <span class="required">*</span></label>
         <div class="checkbox-group">
           <label class="checkbox-item">
-            <input type="checkbox"> Grief
+            <input type="checkbox" name="Workshop: Grief" value="Yes"> Grief
           </label>
           <label class="checkbox-item">
-            <input type="checkbox"> Breathwork
+            <input type="checkbox" name="Workshop: Breathwork" value="Yes"> Breathwork
           </label>
           <label class="checkbox-item">
-            <input type="checkbox"> Financial Wellness
+            <input type="checkbox" name="Workshop: Financial Wellness" value="Yes"> Financial Wellness
           </label>
           <label class="checkbox-item">
-            <input type="checkbox"> Empathy
+            <input type="checkbox" name="Workshop: Empathy" value="Yes"> Empathy
           </label>
           <label class="checkbox-item">
-            <input type="checkbox"> Community Health
+            <input type="checkbox" name="Workshop: Community Health" value="Yes"> Community Health
           </label>
           <label class="checkbox-item">
-            <input type="checkbox"> Body &amp; Identity Confidence
+            <input type="checkbox" name="Workshop: Body & Identity Confidence" value="Yes"> Body &amp; Identity Confidence
           </label>
         </div>
       </div>
 
       <div class="field-group">
         <label>Facilitator Role Preference</label>
-        <select>
+        <select name="Facilitator Role Preference">
           <option value="">-- Select --</option>
           <option>Lead Facilitator</option>
           <option>Co-Facilitator</option>
           <option>Open to Either</option>
         </select>
+      </div>
+    </div>
+
+    <!-- MEETING LEAD SIGN-UP -->
+    <div class="form-card">
+      <div class="section-title">Meeting Lead Sign-Up</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:20px;">
+        We have <strong>3 Speaker Meeting</strong> slots and <strong>2 Literature Meeting</strong> slots available at the conference. Select any you are interested in leading.
+      </p>
+
+      <div class="field-group">
+        <label>Speaker Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 1" value="Yes"> Speaker Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 2" value="Yes"> Speaker Meeting 2
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 3" value="Yes"> Speaker Meeting 3
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Literature Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Literature Meeting 1" value="Yes"> Literature Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Literature Meeting 2" value="Yes"> Literature Meeting 2
+          </label>
+        </div>
       </div>
     </div>
 

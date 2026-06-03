@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="BYC — The Liberation Sessions Workshop Application">
+<meta property="og:type" content="website">
+<meta name="twitter:title" content="BYC — The Liberation Sessions Workshop Application">
+<title>BYC — The Liberation Sessions Workshop Application</title>
+<style>
+  :root {
+    --byc-black: #1A1A1A;
+    --byc-yellow: #F5C518;
+    --byc-light-yellow: #FFF9DC;
+    --byc-gold: #D4A017;
+    --byc-gray: #333333;
+    --byc-light-gray: #F4F4F4;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #EFEFEF;
+    color: var(--byc-gray);
+    padding: 32px 16px 60px;
+  }
+
+  .page-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .header {
+    background: var(--byc-black);
+    color: var(--white);
+    text-align: center;
+    padding: 32px 24px 24px;
+    border-top: 6px solid var(--byc-yellow);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .header .org-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--byc-yellow);
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .header .sessions-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--byc-yellow);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-size: 13px;
+    color: #CCCCCC;
+    margin-top: 6px;
+  }
+
+  .header .event-badge {
+    display: inline-block;
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  .intro-banner {
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--byc-gray);
+  }
+
+  .form-card {
+    background: var(--white);
+    padding: 28px 32px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--byc-black);
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 8px 14px;
+    margin: 0 -32px 20px;
+  }
+
+  .field-group {
+    margin-bottom: 20px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--byc-black);
+    margin-bottom: 6px;
+  }
+
+  .field-group label .required {
+    color: var(--byc-gold);
+    margin-left: 3px;
+  }
+
+  .field-group input[type="text"],
+  .field-group input[type="email"],
+  .field-group input[type="tel"],
+  .field-group select,
+  .field-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: var(--byc-gray);
+    background: var(--byc-light-gray);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    border-color: var(--byc-yellow);
+    background: #FFFFF8;
+  }
+
+  .field-group textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .field-group select { cursor: pointer; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--byc-gray);
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    background: var(--byc-light-gray);
+    transition: all 0.15s;
+  }
+
+  .checkbox-item:hover {
+    border-color: var(--byc-yellow);
+    background: var(--byc-light-yellow);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--byc-black);
+    flex-shrink: 0;
+  }
+
+  .field-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .submit-section {
+    background: var(--byc-black);
+    padding: 24px 32px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .submit-btn {
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    padding: 14px 48px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .submit-btn:hover { opacity: 0.85; }
+
+  .submit-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 12px;
+  }
+
+  .contacts-bar {
+    background: var(--byc-light-yellow);
+    border: 1px solid #E8D88A;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  .contacts-bar strong { color: var(--byc-black); }
+
+  .contacts-bar .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--byc-gold);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .checkbox-group { grid-template-columns: 1fr; }
+    .form-card { padding: 20px 18px; }
+    .section-title { margin: 0 -18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="org-name">The Blackyard Collective</div>
+    <h1>Workshop Application</h1>
+    <div class="sessions-title">The Liberation Sessions</div>
+    <div class="subtitle">Blackyard Collective National Conference &bull; Idyllwild, CA</div>
+    <div class="event-badge">Step Workshop Interest</div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-banner">
+    The <strong>Liberation Sessions</strong> are a series of Step-based workshops centering the lived experience of Black queer people in recovery. We are seeking passionate, qualified facilitators to lead these sessions at the BYC National Conference in October 2026. Complete this form if you are interested in facilitating or supporting one of the Liberation Sessions below.
+    <br><br>
+    Questions? Contact <strong>James Purtue: 323.213.6634</strong> &nbsp;&bull;&nbsp; <strong>Celina Lopez: 914.439.5420</strong>
+  </div>
+
+  <!-- Success Message -->
+  <div id="success-msg" style="display:none; background:#1A1A1A; color:#F5C518; text-align:center; padding:32px 24px; border-radius:4px; margin-bottom:16px; border-top:6px solid #F5C518;">
+    <div style="font-size:28px; margin-bottom:10px;">&#10003;</div>
+    <div style="font-size:18px; font-weight:900; margin-bottom:6px;">Workshop Interest Submitted!</div>
+    <div style="font-size:13px; color:#cccccc;">Thank you for your interest. James or Celina will be in touch soon.<br>Questions? James Purtue: 323.213.6634 &nbsp;&bull;&nbsp; Celina Lopez: 914.439.5420</div>
+  </div>
+
+  <form id="liberation-form" action="https://formspree.io/f/xdabbjjn" method="POST">
+    <input type="hidden" name="_subject" value="BYC Liberation Sessions Workshop Interest – New Submission">
+    <input type="hidden" name="Form Type" value="Liberation Sessions Workshop">
+
+    <!-- PERSONAL INFORMATION -->
+    <div class="form-card">
+      <div class="section-title">Personal Information</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" name="Full Name" placeholder="First and Last Name" required>
+        </div>
+        <div class="field-group">
+          <label>Preferred Pronouns</label>
+          <input type="text" name="Preferred Pronouns" placeholder="e.g. she/her, they/them">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" name="Phone Number" placeholder="(000) 000-0000" required>
+        </div>
+        <div class="field-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" name="_replyto" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>City / State</label>
+          <input type="text" name="City / State" placeholder="e.g. New York, NY">
+        </div>
+        <div class="field-group">
+          <label>Organization / Community Affiliation</label>
+          <input type="text" name="Organization / Affiliation" placeholder="e.g. NYCMA, Home Group, Nonprofit">
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKSHOP SELECTION -->
+    <div class="form-card">
+      <div class="section-title">The Liberation Sessions — Workshop Selection</div>
+
+      <div class="field-group">
+        <label>Which Liberation Session(s) are you interested in facilitating or supporting? <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps One & Two" value="Yes">
+            Steps One &amp; Two
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps Three & Four" value="Yes">
+            Steps Three &amp; Four
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps Five & Six" value="Yes">
+            Steps Five &amp; Six
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps Seven & Eight" value="Yes">
+            Steps Seven &amp; Eight
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps Nine & Ten" value="Yes">
+            Steps Nine &amp; Ten
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Workshop: Steps Eleven & Twelve" value="Yes">
+            Steps Eleven &amp; Twelve
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Facilitator Role Preference</label>
+        <select name="Facilitator Role">
+          <option value="">-- Select --</option>
+          <option>Lead Facilitator</option>
+          <option>Co-Facilitator</option>
+          <option>Support Role</option>
+          <option>Open to Either</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE & BACKGROUND -->
+    <div class="form-card">
+      <div class="section-title">Experience &amp; Background</div>
+
+      <div class="field-group">
+        <label>Relevant Experience / Short Bio <span class="required">*</span></label>
+        <textarea name="Relevant Experience" placeholder="Describe any facilitation experience, recovery background, lived experience, or professional qualifications relevant to the Step Workshop(s) you selected." required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Why are you drawn to this Step Workshop? <span class="required">*</span></label>
+        <textarea name="Workshop Connection" placeholder="Share why this topic resonates with you or how your story connects to the Step(s) you've selected." required></textarea>
+      </div>
+    </div>
+
+    <!-- AVAILABILITY -->
+    <div class="form-card">
+      <div class="section-title">Availability &amp; Additional Notes</div>
+
+      <div class="field-group">
+        <label>General Availability for Planning Calls</label>
+        <select name="Planning Call Availability">
+          <option value="">-- Select --</option>
+          <option>Weekday mornings</option>
+          <option>Weekday afternoons</option>
+          <option>Weekday evenings</option>
+          <option>Weekends</option>
+          <option>Flexible / Multiple options</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Will you be available to travel to Los Angeles in October 2026? <span class="required">*</span></label>
+        <select name="LA Travel Availability" required>
+          <option value="">-- Select --</option>
+          <option>Yes – confirmed</option>
+          <option>Yes – pending confirmation</option>
+          <option>Need support (travel assistance)</option>
+          <option>Unsure at this time</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Questions or Additional Notes</label>
+        <textarea name="Additional Notes" placeholder="Any questions for James or Celina, accessibility needs, or anything else you'd like the team to know."></textarea>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="submit-btn">Submit Workshop Interest</button>
+      <div class="submit-note">Your information is confidential and used solely for Liberation Sessions facilitator selection.</div>
+      <div id="error-msg" style="display:none; color:#ffcccc; margin-top:10px; font-size:13px;">Something went wrong. Please try again or contact James: 323.213.6634</div>
+    </div>
+
+  </form>
+
+  <div class="contacts-bar">
+    <div><span class="label">Questions?</span></div>
+    <div><strong>James Purtue:</strong> 323.213.6634</div>
+    <div><strong>Celina Lopez:</strong> 914.439.5420</div>
+  </div>
+
+  <div style="background:#1A1A1A;padding:18px 32px;font-size:11px;color:#999999;line-height:1.9;border-top:2px solid #F5C518;">
+    <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#F5C518;letter-spacing:1px;text-transform:uppercase;">Registration &amp; Travel Information</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Registration:</strong> $500 per attendee. Destination airport: <strong style="color:#ffffff;">LAX</strong>. Attendees are responsible for their own transportation to Los Angeles.</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Shuttle included:</strong> Ground transportation from LAX to Tahquitz Pines Retreat, Idyllwild, CA is provided. Bus, room, and meals are all included in the $500 registration fee.</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Important:</strong> Registration is required for all attendees, including workshop facilitators. Service work does not substitute for registration.</p>
+    <p style="margin:0;color:#cccccc;"><strong style="color:#ffffff;">Need support?</strong> Installment payment plans, indigent sponsorship applications, and personal fundraising tools are all available at <strong style="color:#F5C518;">theblackyardcollectivenyc.org</strong></p>
+  </div>
+
+</div>
+
+<script>
+  const form       = document.getElementById('liberation-form');
+  const btn        = document.getElementById('submit-btn');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg   = document.getElementById('error-msg');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    errorMsg.style.display = 'none';
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Submit Workshop Interest';
+      btn.disabled = false;
+      errorMsg.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>

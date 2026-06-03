@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="BYC Speaker Application">
+<meta property="og:type" content="website">
+<meta name="twitter:title" content="BYC Speaker Application">
+<title>BYC Speaker Application</title>
+<style>
+  :root {
+    --byc-black: #1A1A1A;
+    --byc-yellow: #F5C518;
+    --byc-light-yellow: #FFF9DC;
+    --byc-gold: #D4A017;
+    --byc-gray: #333333;
+    --byc-light-gray: #F4F4F4;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #EFEFEF;
+    color: var(--byc-gray);
+    padding: 32px 16px 60px;
+  }
+
+  .page-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .header {
+    background: var(--byc-black);
+    color: var(--white);
+    text-align: center;
+    padding: 32px 24px 24px;
+    border-top: 6px solid var(--byc-yellow);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .header .org-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--byc-yellow);
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-size: 13px;
+    color: #CCCCCC;
+    margin-top: 6px;
+  }
+
+  .header .event-badge {
+    display: inline-block;
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  .intro-banner {
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--byc-gray);
+  }
+
+  .form-card {
+    background: var(--white);
+    padding: 28px 32px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--byc-black);
+    background: var(--byc-light-yellow);
+    border-left: 4px solid var(--byc-yellow);
+    padding: 8px 14px;
+    margin: 0 -32px 20px;
+  }
+
+  .field-group {
+    margin-bottom: 20px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--byc-black);
+    margin-bottom: 6px;
+  }
+
+  .field-group label .required {
+    color: var(--byc-gold);
+    margin-left: 3px;
+  }
+
+  .field-group input[type="text"],
+  .field-group input[type="email"],
+  .field-group input[type="tel"],
+  .field-group select,
+  .field-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: var(--byc-gray);
+    background: var(--byc-light-gray);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    border-color: var(--byc-yellow);
+    background: #FFFFF8;
+  }
+
+  .field-group textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .field-group select { cursor: pointer; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--byc-gray);
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1.5px solid #DDDDDD;
+    border-radius: 4px;
+    background: var(--byc-light-gray);
+    transition: all 0.15s;
+  }
+
+  .checkbox-item:hover {
+    border-color: var(--byc-yellow);
+    background: var(--byc-light-yellow);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--byc-black);
+    flex-shrink: 0;
+  }
+
+  .field-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .upload-zone {
+    border: 2px dashed var(--byc-yellow);
+    background: var(--byc-light-yellow);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+    transition: border-color 0.2s, background 0.2s;
+    margin-top: 6px;
+  }
+
+  .upload-zone:hover {
+    border-color: var(--byc-gold);
+    background: #FFF3C0;
+  }
+
+  .upload-zone.drag-over {
+    border-color: var(--byc-gold);
+    background: #FFF3C0;
+  }
+
+  .upload-zone .upload-filename {
+    font-weight: 700;
+    color: var(--byc-black);
+  }
+
+  .submit-section {
+    background: var(--byc-black);
+    padding: 24px 32px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .submit-btn {
+    background: var(--byc-yellow);
+    color: var(--byc-black);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    padding: 14px 48px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .submit-btn:hover { opacity: 0.85; }
+
+  .submit-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 12px;
+  }
+
+  .contacts-bar {
+    background: var(--byc-light-yellow);
+    border: 1px solid #E8D88A;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  .contacts-bar strong { color: var(--byc-black); }
+
+  .contacts-bar .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--byc-gold);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .checkbox-group { grid-template-columns: 1fr; }
+    .form-card { padding: 20px 18px; }
+    .section-title { margin: 0 -18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="org-name">The Blackyard Collective</div>
+    <h1>Speaker Application</h1>
+    <div class="subtitle">Blackyard Collective National Conference &bull; Idyllwild, CA</div>
+    <div class="event-badge">October 2026</div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-banner">
+    We have <strong>3 headlining Speaker Meeting slots</strong> available at the BYC National Conference. Speaker meetings feature personal testimonies and stories of recovery from our community. To be considered, complete the application below and upload a <strong>20–30 minute audio recording</strong> of yourself speaking.
+    <br><br>
+    Questions? Contact <strong>James Purtue: 323.213.6634</strong> &nbsp;&bull;&nbsp; <strong>Celina Lopez: 914.439.5420</strong>
+  </div>
+
+  <!-- Success Message -->
+  <div id="success-msg" style="display:none; background:#1A1A1A; color:#F5C518; text-align:center; padding:32px 24px; border-radius:4px; margin-bottom:16px; border-top:6px solid #F5C518;">
+    <div style="font-size:28px; margin-bottom:10px;">&#10003;</div>
+    <div style="font-size:18px; font-weight:900; margin-bottom:6px;">Speaker Application Submitted!</div>
+    <div style="font-size:13px; color:#ccc;">Thank you for applying. James or Celina will be in touch soon.<br>Questions? James Purtue: 323.213.6634 &nbsp;&bull;&nbsp; Celina Lopez: 914.439.5420</div>
+  </div>
+
+  <form id="speaker-form" action="https://formspree.io/f/xdabbjjn" method="POST">
+    <input type="hidden" name="_subject" value="BYC Speaker Application – New Submission">
+    <input type="hidden" name="Form Type" value="Speaker Application">
+
+    <!-- PERSONAL INFORMATION -->
+    <div class="form-card">
+      <div class="section-title">Personal Information</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" name="Full Name" placeholder="First and Last Name" required>
+        </div>
+        <div class="field-group">
+          <label>Preferred Pronouns</label>
+          <input type="text" name="Preferred Pronouns" placeholder="e.g. she/her, they/them">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" name="Phone Number" placeholder="(000) 000-0000" required>
+        </div>
+        <div class="field-group">
+          <label>Email Address <span class="required">*</span></label>
+          <input type="email" name="_replyto" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>City / State</label>
+          <input type="text" name="City / State" placeholder="e.g. New York, NY">
+        </div>
+        <div class="field-group">
+          <label>Length of Sobriety <span class="required">*</span></label>
+          <input type="text" name="Length of Sobriety" placeholder="e.g. 3 years, 18 months" required>
+          <div class="field-note">Please be specific. Sobriety is honored and celebrated here.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPEAKER QUALIFICATIONS -->
+    <div class="form-card">
+      <div class="section-title">Speaker Qualifications</div>
+
+      <div class="field-group">
+        <label>Prior Speaking Experience <span class="required">*</span></label>
+        <textarea name="Prior Speaking Experience" placeholder="Describe any experience speaking at AA/NA/recovery meetings, conferences, events, churches, or other public settings. Include approximate length and audience size where relevant." required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Your Story / Topic Focus <span class="required">*</span></label>
+        <textarea name="Story / Topic Focus" placeholder="What is the core message or theme of your speaker story? Briefly describe your journey and what you want attendees to leave with." required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Why do you want to speak at BYC? <span class="required">*</span></label>
+        <textarea name="Why BYC" placeholder="Share why this conference and this community matter to you and why you feel called to share your story here." required></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Home Group / Fellowship Affiliation</label>
+        <input type="text" name="Home Group / Affiliation" placeholder="e.g. NYCMA, AA, NA, home group name">
+      </div>
+    </div>
+
+    <!-- MEETING AVAILABILITY -->
+    <div class="form-card">
+      <div class="section-title">Meeting Availability</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
+        Select which Speaker Meeting slot(s) you are available for. Final assignments will be confirmed by the organizing team.
+      </p>
+
+      <div class="field-group">
+        <label>Speaker Meeting Preference <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 1" value="Yes"> Speaker Meeting 1
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 2" value="Yes"> Speaker Meeting 2
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="Speaker Meeting 3" value="Yes"> Speaker Meeting 3
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Will you be available to travel to Los Angeles in October 2026? <span class="required">*</span></label>
+        <select name="LA Travel Availability" required>
+          <option value="">-- Select --</option>
+          <option>Yes – confirmed</option>
+          <option>Yes – pending confirmation</option>
+          <option>Need support (travel assistance)</option>
+          <option>Unsure at this time</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- AUDIO UPLOAD -->
+    <div class="form-card">
+      <div class="section-title">Speaker Recording</div>
+
+      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:18px;">
+        Upload a <strong>20–30 minute audio recording</strong> of yourself speaking. This is required for your application to be considered. Your recording can be from a meeting, event, or recorded specifically for this application.
+      </p>
+
+      <div class="field-group">
+        <label>Upload Your Recording <span class="required">*</span></label>
+        <div class="upload-zone" id="speaker-upload-zone">
+          🎙 Drag &amp; drop your audio file here, or click to browse
+        </div>
+        <input type="file" id="speaker-audio-input" name="Speaker Audio" accept=".mp3,.m4a,.m4b,.aac,.wav,.ogg,.oga,.flac,.wma" required style="display:none">
+        <div class="field-note">Accepted: MP3, M4A, WAV, AAC, OGG, FLAC, WMA &middot; Max 50MB &middot; 20–30 minutes preferred</div>
+        <div id="upload-error-note" style="display:none; margin-top:8px; font-size:12px; color:#b05000; background:#FFF3C0; border-left:3px solid #D4A017; padding:8px 12px; border-radius:3px; line-height:1.6;">
+          <strong>Note:</strong> If file upload fails, please email your recording directly to
+          <strong>Purtuejames@gmail.com</strong> with subject line
+          &ldquo;BYC Speaker Recording &mdash; [Your Name]&rdquo;
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Anything else you'd like us to know?</label>
+        <textarea name="Additional Notes" placeholder="Any additional context, accessibility needs, or questions for the organizing team."></textarea>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="submit-btn">Submit Speaker Application</button>
+      <div class="submit-note">Your information is confidential and used solely for speaker selection purposes.</div>
+      <div id="error-msg" style="display:none; color:#ffcccc; margin-top:10px; font-size:13px;">Something went wrong. Please try again or contact James: 323.213.6634</div>
+    </div>
+
+  </form>
+
+  <div class="contacts-bar">
+    <div><span class="label">Questions?</span></div>
+    <div><strong>James Purtue:</strong> 323.213.6634</div>
+    <div><strong>Celina Lopez:</strong> 914.439.5420</div>
+  </div>
+
+  <div style="background:#1A1A1A;padding:18px 32px;font-size:11px;color:#999999;line-height:1.9;border-top:2px solid #F5C518;">
+    <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#F5C518;letter-spacing:1px;text-transform:uppercase;">Registration &amp; Travel Information</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Registration:</strong> $500 per attendee. Destination airport: <strong style="color:#ffffff;">LAX</strong>. Attendees are responsible for their own transportation to Los Angeles.</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Shuttle included:</strong> Ground transportation from LAX to Tahquitz Pines Retreat, Idyllwild, CA is provided. Bus, room, and meals are all included in the $500 registration fee.</p>
+    <p style="margin:0 0 4px;color:#cccccc;"><strong style="color:#ffffff;">Important:</strong> Registration is required for all attendees, including speakers. Service work does not substitute for registration.</p>
+    <p style="margin:0;color:#cccccc;"><strong style="color:#ffffff;">Need support?</strong> Installment payment plans, indigent sponsorship applications, and personal fundraising tools are all available at <strong style="color:#F5C518;">theblackyardcollectivenyc.org</strong></p>
+  </div>
+
+</div>
+
+<script>
+  // ── Audio upload zone ───────────────────────────────────────────────────────
+  (function () {
+    const zone  = document.getElementById('speaker-upload-zone');
+    const input = document.getElementById('speaker-audio-input');
+    if (!zone || !input) return;
+
+    function showFile(file) {
+      zone.innerHTML = '<span class="upload-filename">&#10003; ' + file.name + '</span>';
+    }
+
+    zone.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      if (input.files && input.files[0]) showFile(input.files[0]);
+    });
+
+    zone.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', function () {
+      zone.classList.remove('drag-over');
+    });
+    zone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        showFile(file);
+      }
+    });
+  })();
+
+  // ── Form submission ─────────────────────────────────────────────────────────
+  const form       = document.getElementById('speaker-form');
+  const btn        = document.getElementById('submit-btn');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg   = document.getElementById('error-msg');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    errorMsg.style.display = 'none';
+    document.getElementById('upload-error-note').style.display = 'none';
+
+    const data = new FormData(form);
+    const audioInput = document.getElementById('speaker-audio-input');
+    if (audioInput && audioInput.files[0]) {
+      data.set('Speaker Audio', audioInput.files[0]);
+    }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Submit Speaker Application';
+      btn.disabled = false;
+      errorMsg.style.display = 'block';
+      if (audioInput && audioInput.files && audioInput.files[0]) {
+        document.getElementById('upload-error-note').style.display = 'block';
+      }
+    }
+  });
+</script>
+</body>
+</html>
