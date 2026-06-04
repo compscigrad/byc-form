@@ -411,42 +411,162 @@
 
     <!-- MEETING LEAD SIGN-UP -->
     <div class="form-card">
-      <div class="section-title">Meeting Lead Sign-Up</div>
+      <div class="section-title">Chair a Meeting</div>
 
       <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:12px;">
-        These meeting lead opportunities are separate from our 3 featured conference speakers.
-      </p>
-      <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:12px;">
-        We have <strong>3 Speaker Meeting</strong> slots and <strong>2 Literature Meeting</strong> slots available as part of our regular conference programming. These are traditional twelve step meeting formats where a volunteer may share their experience, strength, and hope and then open the meeting for group sharing, and/or guide discussion through selected recovery literature before opening the floor for participant reflections.
+        These are optional <strong>Early Bird</strong> (7:00 AM) and <strong>Night Cap</strong> (11:00 PM) Twelve Step-style recovery meetings held during the conference — separate from the main conference speakers and wellness workshops.
       </p>
       <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:20px;">
-        Select any meeting(s) you are interested in leading.
+        Select any slot(s) you're available to chair. For speaker / lead-share meetings, you may open the meeting yourself or invite a conference attendee to share their experience, strength, and hope before opening the floor for group sharing.
       </p>
 
-      <div class="field-group">
-        <label>Speaker Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox" name="Speaker Meeting 1" value="Yes"> Speaker Meeting 1
+      <!-- EARLY BIRD MEETINGS -->
+      <div class="field-group" style="margin-bottom:24px;">
+        <label style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#D4A017;margin-bottom:12px;display:block;">Early Bird Meetings — 7:00 AM</label>
+
+        <!-- Early Bird: Saturday -->
+        <div class="meeting-slot" data-slot-id="eb-sat" style="margin-bottom:10px;">
+          <label class="checkbox-item" style="margin-bottom:0;">
+            <input type="checkbox" name="Chair: Early Bird Saturday" value="Yes" class="slot-checkbox" data-slot="eb-sat">
+            <span>Saturday</span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Speaker Meeting 2" value="Yes"> Speaker Meeting 2
+          <div id="eb-sat-details" style="display:none;margin-top:10px;margin-left:28px;padding:14px 16px;background:#f9f7f2;border-left:3px solid #F5C518;border-radius:3px;">
+            <div style="margin-bottom:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:8px;">Preferred format</label>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Saturday — Format" value="Literature-based meeting" class="format-radio" data-slot="eb-sat"> Literature-based meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Saturday — Format" value="Speaker / lead-share meeting" class="format-radio" data-slot="eb-sat"> Speaker / lead-share meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Saturday — Format" value="Either format is fine" class="format-radio" data-slot="eb-sat"> Either format is fine</label>
+              </div>
+            </div>
+            <div id="eb-sat-lit" style="display:none;margin-top:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:6px;">Fellowship / literature</label>
+              <select name="Chair: Early Bird Saturday — Fellowship" class="fellowship-select" data-slot="eb-sat">
+                <option value="">-- Select fellowship --</option>
+                <option>AA</option><option>NA</option><option>CMA</option><option>Al-Anon</option><option>SLAA</option><option>Other</option>
+              </select>
+              <div id="eb-sat-other" style="display:none;margin-top:8px;">
+                <input type="text" name="Chair: Early Bird Saturday — Other Fellowship" placeholder="Specify fellowship or literature source">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Early Bird: Sunday -->
+        <div class="meeting-slot" data-slot-id="eb-sun">
+          <label class="checkbox-item" style="margin-bottom:0;">
+            <input type="checkbox" name="Chair: Early Bird Sunday" value="Yes" class="slot-checkbox" data-slot="eb-sun">
+            <span>Sunday</span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Speaker Meeting 3" value="Yes"> Speaker Meeting 3
-          </label>
+          <div id="eb-sun-details" style="display:none;margin-top:10px;margin-left:28px;padding:14px 16px;background:#f9f7f2;border-left:3px solid #F5C518;border-radius:3px;">
+            <div style="margin-bottom:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:8px;">Preferred format</label>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Sunday — Format" value="Literature-based meeting" class="format-radio" data-slot="eb-sun"> Literature-based meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Sunday — Format" value="Speaker / lead-share meeting" class="format-radio" data-slot="eb-sun"> Speaker / lead-share meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Early Bird Sunday — Format" value="Either format is fine" class="format-radio" data-slot="eb-sun"> Either format is fine</label>
+              </div>
+            </div>
+            <div id="eb-sun-lit" style="display:none;margin-top:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:6px;">Fellowship / literature</label>
+              <select name="Chair: Early Bird Sunday — Fellowship" class="fellowship-select" data-slot="eb-sun">
+                <option value="">-- Select fellowship --</option>
+                <option>AA</option><option>NA</option><option>CMA</option><option>Al-Anon</option><option>SLAA</option><option>Other</option>
+              </select>
+              <div id="eb-sun-other" style="display:none;margin-top:8px;">
+                <input type="text" name="Chair: Early Bird Sunday — Other Fellowship" placeholder="Specify fellowship or literature source">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- NIGHT CAP MEETINGS -->
       <div class="field-group">
-        <label>Literature Meetings <span style="font-weight:400;font-size:11px;color:#888;">(select all that apply)</span></label>
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox" name="Literature Meeting 1" value="Yes"> Literature Meeting 1
+        <label style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#D4A017;margin-bottom:12px;display:block;">Night Cap Meetings — 11:00 PM</label>
+
+        <!-- Night Cap: Friday -->
+        <div class="meeting-slot" data-slot-id="nc-fri" style="margin-bottom:10px;">
+          <label class="checkbox-item" style="margin-bottom:0;">
+            <input type="checkbox" name="Chair: Night Cap Friday" value="Yes" class="slot-checkbox" data-slot="nc-fri">
+            <span>Friday</span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Literature Meeting 2" value="Yes"> Literature Meeting 2
+          <div id="nc-fri-details" style="display:none;margin-top:10px;margin-left:28px;padding:14px 16px;background:#f9f7f2;border-left:3px solid #F5C518;border-radius:3px;">
+            <div style="margin-bottom:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:8px;">Preferred format</label>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Friday — Format" value="Literature-based meeting" class="format-radio" data-slot="nc-fri"> Literature-based meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Friday — Format" value="Speaker / lead-share meeting" class="format-radio" data-slot="nc-fri"> Speaker / lead-share meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Friday — Format" value="Either format is fine" class="format-radio" data-slot="nc-fri"> Either format is fine</label>
+              </div>
+            </div>
+            <div id="nc-fri-lit" style="display:none;margin-top:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:6px;">Fellowship / literature</label>
+              <select name="Chair: Night Cap Friday — Fellowship" class="fellowship-select" data-slot="nc-fri">
+                <option value="">-- Select fellowship --</option>
+                <option>AA</option><option>NA</option><option>CMA</option><option>Al-Anon</option><option>SLAA</option><option>Other</option>
+              </select>
+              <div id="nc-fri-other" style="display:none;margin-top:8px;">
+                <input type="text" name="Chair: Night Cap Friday — Other Fellowship" placeholder="Specify fellowship or literature source">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Night Cap: Saturday -->
+        <div class="meeting-slot" data-slot-id="nc-sat" style="margin-bottom:10px;">
+          <label class="checkbox-item" style="margin-bottom:0;">
+            <input type="checkbox" name="Chair: Night Cap Saturday" value="Yes" class="slot-checkbox" data-slot="nc-sat">
+            <span>Saturday</span>
           </label>
+          <div id="nc-sat-details" style="display:none;margin-top:10px;margin-left:28px;padding:14px 16px;background:#f9f7f2;border-left:3px solid #F5C518;border-radius:3px;">
+            <div style="margin-bottom:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:8px;">Preferred format</label>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Saturday — Format" value="Literature-based meeting" class="format-radio" data-slot="nc-sat"> Literature-based meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Saturday — Format" value="Speaker / lead-share meeting" class="format-radio" data-slot="nc-sat"> Speaker / lead-share meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Saturday — Format" value="Either format is fine" class="format-radio" data-slot="nc-sat"> Either format is fine</label>
+              </div>
+            </div>
+            <div id="nc-sat-lit" style="display:none;margin-top:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:6px;">Fellowship / literature</label>
+              <select name="Chair: Night Cap Saturday — Fellowship" class="fellowship-select" data-slot="nc-sat">
+                <option value="">-- Select fellowship --</option>
+                <option>AA</option><option>NA</option><option>CMA</option><option>Al-Anon</option><option>SLAA</option><option>Other</option>
+              </select>
+              <div id="nc-sat-other" style="display:none;margin-top:8px;">
+                <input type="text" name="Chair: Night Cap Saturday — Other Fellowship" placeholder="Specify fellowship or literature source">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Night Cap: Sunday -->
+        <div class="meeting-slot" data-slot-id="nc-sun">
+          <label class="checkbox-item" style="margin-bottom:0;">
+            <input type="checkbox" name="Chair: Night Cap Sunday" value="Yes" class="slot-checkbox" data-slot="nc-sun">
+            <span>Sunday</span>
+          </label>
+          <div id="nc-sun-details" style="display:none;margin-top:10px;margin-left:28px;padding:14px 16px;background:#f9f7f2;border-left:3px solid #F5C518;border-radius:3px;">
+            <div style="margin-bottom:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:8px;">Preferred format</label>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Sunday — Format" value="Literature-based meeting" class="format-radio" data-slot="nc-sun"> Literature-based meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Sunday — Format" value="Speaker / lead-share meeting" class="format-radio" data-slot="nc-sun"> Speaker / lead-share meeting</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#333;font-weight:400;cursor:pointer;"><input type="radio" name="Chair: Night Cap Sunday — Format" value="Either format is fine" class="format-radio" data-slot="nc-sun"> Either format is fine</label>
+              </div>
+            </div>
+            <div id="nc-sun-lit" style="display:none;margin-top:10px;">
+              <label style="font-size:12px;font-weight:700;color:#333;display:block;margin-bottom:6px;">Fellowship / literature</label>
+              <select name="Chair: Night Cap Sunday — Fellowship" class="fellowship-select" data-slot="nc-sun">
+                <option value="">-- Select fellowship --</option>
+                <option>AA</option><option>NA</option><option>CMA</option><option>Al-Anon</option><option>SLAA</option><option>Other</option>
+              </select>
+              <div id="nc-sun-other" style="display:none;margin-top:8px;">
+                <input type="text" name="Chair: Night Cap Sunday — Other Fellowship" placeholder="Specify fellowship or literature source">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -531,6 +651,51 @@
     </div>
 
   </form>
+
+  <script>
+    // ── Meeting chair slot expand/collapse ────────────────────────────────────
+    (function () {
+      // Slot checkbox → show/hide the detail panel
+      document.querySelectorAll('.slot-checkbox').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          var panel = document.getElementById(this.dataset.slot + '-details');
+          if (!panel) return;
+          panel.style.display = this.checked ? 'block' : 'none';
+          if (!this.checked) {
+            panel.querySelectorAll('input[type=radio]').forEach(function (r) { r.checked = false; });
+            panel.querySelectorAll('select').forEach(function (s) { s.value = ''; });
+            panel.querySelectorAll('input[type=text]').forEach(function (t) { t.value = ''; });
+            panel.querySelectorAll('[id$="-lit"]').forEach(function (el) { el.style.display = 'none'; });
+            panel.querySelectorAll('[id$="-other"]').forEach(function (el) { el.style.display = 'none'; });
+          }
+        });
+      });
+
+      // Format radio → show/hide literature fellowship panel
+      document.querySelectorAll('.format-radio').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          var slot = this.dataset.slot;
+          var litPanel = document.getElementById(slot + '-lit');
+          if (!litPanel) return;
+          var isLit = this.value === 'Literature-based meeting';
+          litPanel.style.display = isLit ? 'block' : 'none';
+          if (!isLit) {
+            litPanel.querySelector('select').value = '';
+            var otherPanel = document.getElementById(slot + '-other');
+            if (otherPanel) { otherPanel.style.display = 'none'; otherPanel.querySelector('input').value = ''; }
+          }
+        });
+      });
+
+      // Fellowship select → show/hide Other text field
+      document.querySelectorAll('.fellowship-select').forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          var otherPanel = document.getElementById(this.dataset.slot + '-other');
+          if (otherPanel) otherPanel.style.display = (this.value === 'Other') ? 'block' : 'none';
+        });
+      });
+    })();
+  </script>
 
   <script>
     const form = document.getElementById('byc-form');
