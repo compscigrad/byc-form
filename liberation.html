@@ -207,6 +207,81 @@
     font-style: italic;
   }
 
+  /* ── Workshop selection cards ─────────────────────────────────────────── */
+  .workshop-category {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--byc-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 22px 0 4px;
+  }
+
+  .workshop-category:first-of-type { margin-top: 0; }
+
+  .workshop-category-note {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .checkbox-group.workshop-group {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .checkbox-item.workshop-option {
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .checkbox-item.workshop-option input[type="checkbox"] {
+    margin-top: 3px;
+  }
+
+  .workshop-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .workshop-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--byc-black);
+  }
+
+  .workshop-subtitle {
+    font-size: 12.5px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--byc-gold);
+  }
+
+  .workshop-step {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--byc-black);
+    background: var(--byc-light-yellow);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    width: fit-content;
+    margin-top: 2px;
+  }
+
+  .workshop-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #666666;
+    margin-top: 2px;
+  }
+
   .submit-section {
     background: var(--byc-black);
     padding: 24px 32px;
@@ -263,6 +338,7 @@
     .checkbox-group { grid-template-columns: 1fr; }
     .form-card { padding: 20px 18px; }
     .section-title { margin: 0 -18px 16px; }
+    .workshop-category { margin-top: 18px; }
   }
 </style>
 </head>
@@ -295,6 +371,16 @@
   <form id="liberation-form" action="https://formspree.io/f/xdabbjjn" method="POST">
     <input type="hidden" name="_subject" value="BYC Liberation Sessions Workshop Interest – New Submission">
     <input type="hidden" name="Form Type" value="Liberation Sessions Workshop">
+    <textarea name="_autoresponse" style="display:none">Thank you for signing up and offering your time, energy, and willingness to be of service with Black Yard Collective. 💛
+
+We've received your submission and your information has been safely saved.
+
+As responses continue to come in, our team will review all interest forms and work thoughtfully to build a balanced and meaningful experience across workshops, meetings, and service opportunities. Once assignments and needs are finalized, someone from our team will reach back out to confirm availability, commitment, and next steps.
+
+We truly appreciate your willingness to contribute and be part of creating something special with our community.
+
+With gratitude,
+The Black Yard Collective Team</textarea>
 
     <!-- PERSONAL INFORMATION -->
     <div class="form-card">
@@ -340,30 +426,76 @@
 
       <div class="field-group">
         <label>Which Liberation Session(s) are you interested in facilitating or supporting? <span class="required">*</span></label>
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps One & Two" value="Yes">
-            Steps One &amp; Two
+
+        <div class="workshop-category">Breaking the Ground (Steps 1&ndash;3)</div>
+        <div class="checkbox-group workshop-group">
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: Breaking the Ground (Steps 1-3)" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">Breaking the Ground (Steps 1&ndash;3)</span>
+              <span class="workshop-subtitle">Friend, You Tried It. Now Pray It.</span>
+              <span class="workshop-subtitle">From Running the Show to Letting It Go</span>
+              <span class="workshop-step">Steps 1, 2 &amp; 3</span>
+              <span class="workshop-desc">Admitting we are powerless and coming to believe that a Power greater than ourselves can help us recover. Recognizing that our lives have become unmanageable and choosing to turn our will and our lives over to that Power.</span>
+            </span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps Three & Four" value="Yes">
-            Steps Three &amp; Four
+        </div>
+
+        <div class="workshop-category">Root Work (Step 4)</div>
+        <div class="workshop-category-note">Applicants should choose ONE of the following Step 4 workshops they wish to facilitate.</div>
+        <div class="checkbox-group workshop-group">
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: Mad for a Reason" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">Mad for a Reason</span>
+              <span class="workshop-subtitle">Religion, Racism, Resentment &amp; Recovery</span>
+              <span class="workshop-step">Step 4 &ndash; Resentment Inventory</span>
+              <span class="workshop-desc">Uncover the resentments that shaped your story and begin transforming anger into freedom.</span>
+            </span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps Five & Six" value="Yes">
-            Steps Five &amp; Six
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: Molly, You in Danger Girl" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">Molly, You in Danger Girl</span>
+              <span class="workshop-subtitle">When Survival Fear Becomes Spiritual Blockage</span>
+              <span class="workshop-step">Step 4 &ndash; Fear Inventory</span>
+              <span class="workshop-desc">Identify the fears driving your decisions and discover what trust looks like in recovery.</span>
+            </span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps Seven & Eight" value="Yes">
-            Steps Seven &amp; Eight
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: From Sneaky Links to Sexual Ideals" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">From Sneaky Links to Sexual Ideals</span>
+              <span class="workshop-subtitle">Trade, Truths &amp; Transformation</span>
+              <span class="workshop-step">Step 4 &ndash; Sex &amp; Relationship Inventory</span>
+              <span class="workshop-desc">Examine patterns in sex, intimacy, and relationships to create healthier ideals moving forward.</span>
+            </span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps Nine & Ten" value="Yes">
-            Steps Nine &amp; Ten
+        </div>
+
+        <div class="workshop-category">Tending the Garden (Steps 10 &amp; 11)</div>
+        <div class="checkbox-group workshop-group">
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: Am I the Drama?" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">Am I the Drama?</span>
+              <span class="workshop-subtitle">Checking and Protecting My Peace, One Inventory at a Time</span>
+              <span class="workshop-step">Steps 10 &amp; 11 &ndash; Daily Inventory, Spiritual Pause &amp; Conscious Contact</span>
+              <span class="workshop-desc">Practice daily inventory, prayer, meditation, and spiritual awareness to maintain emotional balance and protect your peace.</span>
+            </span>
           </label>
-          <label class="checkbox-item">
-            <input type="checkbox" name="Workshop: Steps Eleven & Twelve" value="Yes">
-            Steps Eleven &amp; Twelve
+        </div>
+
+        <div class="workshop-category">Bearing Fruit (Step 12)</div>
+        <div class="checkbox-group workshop-group">
+          <label class="checkbox-item workshop-option">
+            <input type="checkbox" name="Workshop: Healing Forward, Reaching Black" value="Yes">
+            <span class="workshop-copy">
+              <span class="workshop-name">Healing Forward, Reaching Black</span>
+              <span class="workshop-subtitle">How What Was Meant to Break Me Now Blesses Others</span>
+              <span class="workshop-step">Step 12 &ndash; Service, Sponsorship &amp; Carrying the Message</span>
+              <span class="workshop-desc">Transform your healing into service by helping others find recovery, freedom, and community.</span>
+            </span>
           </label>
         </div>
       </div>
