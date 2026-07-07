@@ -308,11 +308,24 @@
     <div style="font-size:28px; margin-bottom:10px;">&#10003;</div>
     <div style="font-size:18px; font-weight:900; margin-bottom:6px;">Speaker Application Submitted!</div>
     <div style="font-size:13px; color:#ccc;">Thank you for applying. James or Celina will be in touch soon.<br>Questions? James Purtue: 323.213.6634 &nbsp;&bull;&nbsp; Celina Lopez: 914.439.5420</div>
+    <div id="success-audio-note" style="display:none; margin-top:14px; padding:12px 16px; background:#2A2200; border:1px solid #F5C518; border-radius:4px; font-size:12px; color:#FFF3C0; line-height:1.6; text-align:left;">
+      <strong style="color:#F5C518;">One more step:</strong> your application was received, but our form cannot accept the audio file itself yet. Please email your recording to <strong>Purtuejames@gmail.com</strong> with subject line &ldquo;BYC Speaker Recording &mdash; [Your Name]&rdquo;.
+    </div>
   </div>
 
   <form id="speaker-form" action="https://formspree.io/f/xdabbjjn" method="POST">
     <input type="hidden" name="_subject" value="BYC Speaker Application – New Submission">
     <input type="hidden" name="Form Type" value="Speaker Application">
+    <textarea name="_autoresponse" style="display:none">Thank you for signing up and offering your time, energy, and willingness to be of service with Black Yard Collective. 💛
+
+We've received your submission and your information has been safely saved.
+
+As responses continue to come in, our team will review all interest forms and work thoughtfully to build a balanced and meaningful experience across workshops, meetings, and service opportunities. Once assignments and needs are finalized, someone from our team will reach back out to confirm availability, commitment, and next steps.
+
+We truly appreciate your willingness to contribute and be part of creating something special with our community.
+
+With gratitude,
+The Black Yard Collective Team</textarea>
 
     <!-- PERSONAL INFORMATION -->
     <div class="form-card">
@@ -428,8 +441,8 @@
         </div>
         <input type="file" id="speaker-audio-input" name="Speaker Audio" accept=".mp3,.m4a,.m4b,.aac,.wav,.ogg,.oga,.flac,.wma" required style="display:none">
         <div class="field-note">Accepted: MP3, M4A, WAV, AAC, OGG, FLAC, WMA &middot; Max 50MB &middot; 20–30 minutes preferred</div>
-        <div id="upload-error-note" style="display:none; margin-top:8px; font-size:12px; color:#b05000; background:#FFF3C0; border-left:3px solid #D4A017; padding:8px 12px; border-radius:3px; line-height:1.6;">
-          <strong>Note:</strong> If file upload fails, please email your recording directly to
+        <div id="upload-error-note" style="margin-top:8px; font-size:12px; color:#b05000; background:#FFF3C0; border-left:3px solid #D4A017; padding:8px 12px; border-radius:3px; line-height:1.6;">
+          <strong>Important:</strong> Our online form cannot accept the audio file itself yet. After submitting this application, please email your recording directly to
           <strong>Purtuejames@gmail.com</strong> with subject line
           &ldquo;BYC Speaker Recording &mdash; [Your Name]&rdquo;
         </div>
@@ -513,13 +526,16 @@
     btn.textContent = 'Sending...';
     btn.disabled = true;
     errorMsg.style.display = 'none';
-    document.getElementById('upload-error-note').style.display = 'none';
 
-    const data = new FormData(form);
     const audioInput = document.getElementById('speaker-audio-input');
-    if (audioInput && audioInput.files[0]) {
-      data.set('Speaker Audio', audioInput.files[0]);
-    }
+    const hasAudio   = !!(audioInput && audioInput.files && audioInput.files[0]);
+
+    // The Formspree account behind this endpoint does not support file
+    // uploads (plan restriction) — including the file field causes the
+    // *entire* request to be rejected, silently dropping the applicant's
+    // answers too. Send the text fields only; audio is collected separately.
+    const data = new FormData(form);
+    data.delete('Speaker Audio');
 
     try {
       const res = await fetch(form.action, {
@@ -531,6 +547,9 @@
       if (res.ok) {
         form.style.display = 'none';
         successMsg.style.display = 'block';
+        if (hasAudio) {
+          document.getElementById('success-audio-note').style.display = 'block';
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error('Server error');
@@ -539,9 +558,6 @@
       btn.textContent = 'Submit Speaker Application';
       btn.disabled = false;
       errorMsg.style.display = 'block';
-      if (audioInput && audioInput.files && audioInput.files[0]) {
-        document.getElementById('upload-error-note').style.display = 'block';
-      }
     }
   });
 </script>
